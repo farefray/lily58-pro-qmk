@@ -201,20 +201,6 @@ void render_paw(void)
     oled_write_P(paw, false);
 }
 
-void render_qr(void)
-{
-    // clang-format off
-    static const char PROGMEM qr[] = {
-        0x93, 0x94, 0x95, 0x96, 0x97,
-        0xb3, 0xb4, 0xb5, 0xb6, 0xb7,
-        0xd3, 0xd4, 0xd5, 0xd6, 0xd7,
-        0x98, 0x99, 0x9a, 0x9b, 0x9c, 0,
-    };
-    // clang-format on
-    oled_write_P(qr, false);
-    oled_write_P(PSTR("don't"), false);
-}
-
 void render_layer_state(void)
 {
     oled_write_P(PSTR("Layer"), false);
@@ -258,8 +244,5 @@ void oled_task_user(void)
     else
     {
         render_paw();
-        render_space();
-        render_space();
-        render_qr();
     }
 }
