@@ -14,5 +14,5 @@ enum lily_layers {
 enum lily_keycodes {
     COLEMAK = SAFE_RANGE,
     QWERTY,
-    GAME,
+    GAME
 };
