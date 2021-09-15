@@ -1,35 +1,37 @@
-#pragma once
+// Thanks to SoundMaster's Code.
 
-// All the logic forSSD1306 OLED update loop lives in this file.
-oled_rotation_t oled_init_user(oled_rotation_t rotation)
-{
-    // Vertical orientation for both screens.
-    return OLED_ROTATION_270;
-}
-
+// Blank space
 void render_space(void) { oled_write_P(PSTR("     "), false); }
 
+// Logo
+void render_logo(void)
+{
+    oled_write_P(PSTR("fare:"), false);
+    oled_write_P(PSTR("rev.2"), false);
+}
+
+// Alt modifiers
 void render_mod_status_gui_alt(uint8_t modifiers)
 {
-    static const char PROGMEM gui_off_1[] = {0x80, 0x81, 0};
-    static const char PROGMEM gui_off_2[] = {0xa0, 0xa1, 0};
-    static const char PROGMEM gui_on_1[] = {0x88, 0x89, 0};
-    static const char PROGMEM gui_on_2[] = {0xa8, 0xa9, 0};
+    static const char PROGMEM gui_off_1[] = {0x85, 0x86, 0};
+    static const char PROGMEM gui_off_2[] = {0xa5, 0xa6, 0};
+    static const char PROGMEM gui_on_1[] = {0x8d, 0x8e, 0};
+    static const char PROGMEM gui_on_2[] = {0xad, 0xae, 0};
 
-    static const char PROGMEM alt_off_1[] = {0x82, 0x83, 0};
-    static const char PROGMEM alt_off_2[] = {0xa2, 0xa3, 0};
-    static const char PROGMEM alt_on_1[] = {0x8a, 0x8b, 0};
-    static const char PROGMEM alt_on_2[] = {0xaa, 0xab, 0};
+    static const char PROGMEM alt_off_1[] = {0x87, 0x88, 0};
+    static const char PROGMEM alt_off_2[] = {0xa7, 0xa8, 0};
+    static const char PROGMEM alt_on_1[] = {0x8f, 0x90, 0};
+    static const char PROGMEM alt_on_2[] = {0xaf, 0xb0, 0};
 
     // fillers between the modifier icons bleed into the icon frames
-    static const char PROGMEM off_off_1[] = {0xc0, 0};
-    static const char PROGMEM off_off_2[] = {0xc1, 0};
-    static const char PROGMEM on_off_1[] = {0xc2, 0};
-    static const char PROGMEM on_off_2[] = {0xc3, 0};
-    static const char PROGMEM off_on_1[] = {0xc4, 0};
-    static const char PROGMEM off_on_2[] = {0xc5, 0};
-    static const char PROGMEM on_on_1[] = {0xc6, 0};
-    static const char PROGMEM on_on_2[] = {0xc7, 0};
+    static const char PROGMEM off_off_1[] = {0xc5, 0};
+    static const char PROGMEM off_off_2[] = {0xc6, 0};
+    static const char PROGMEM on_off_1[] = {0xc7, 0};
+    static const char PROGMEM on_off_2[] = {0xc8, 0};
+    static const char PROGMEM off_on_1[] = {0xc9, 0};
+    static const char PROGMEM off_on_2[] = {0xca, 0};
+    static const char PROGMEM on_on_1[] = {0xcb, 0};
+    static const char PROGMEM on_on_2[] = {0xcc, 0};
 
     if (modifiers & MOD_MASK_GUI)
     {
@@ -102,27 +104,28 @@ void render_mod_status_gui_alt(uint8_t modifiers)
     }
 }
 
+// Ctrl modifiers
 void render_mod_status_ctrl_shift(uint8_t modifiers)
 {
-    static const char PROGMEM ctrl_off_1[] = {0x84, 0x85, 0};
-    static const char PROGMEM ctrl_off_2[] = {0xa4, 0xa5, 0};
-    static const char PROGMEM ctrl_on_1[] = {0x8c, 0x8d, 0};
-    static const char PROGMEM ctrl_on_2[] = {0xac, 0xad, 0};
+    static const char PROGMEM ctrl_off_1[] = {0x89, 0x8a, 0};
+    static const char PROGMEM ctrl_off_2[] = {0xa9, 0xaa, 0};
+    static const char PROGMEM ctrl_on_1[] = {0x91, 0x92, 0};
+    static const char PROGMEM ctrl_on_2[] = {0xb1, 0xb2, 0};
 
-    static const char PROGMEM shift_off_1[] = {0x86, 0x87, 0};
-    static const char PROGMEM shift_off_2[] = {0xa6, 0xa7, 0};
-    static const char PROGMEM shift_on_1[] = {0xc8, 0xc9, 0};
-    static const char PROGMEM shift_on_2[] = {0xca, 0xcb, 0};
+    static const char PROGMEM shift_off_1[] = {0x8b, 0x8c, 0};
+    static const char PROGMEM shift_off_2[] = {0xab, 0xac, 0};
+    static const char PROGMEM shift_on_1[] = {0xcd, 0xce, 0};
+    static const char PROGMEM shift_on_2[] = {0xcf, 0xd0, 0};
 
     // fillers between the modifier icons bleed into the icon frames
-    static const char PROGMEM off_off_1[] = {0xc0, 0};
-    static const char PROGMEM off_off_2[] = {0xc1, 0};
-    static const char PROGMEM on_off_1[] = {0xc2, 0};
-    static const char PROGMEM on_off_2[] = {0xc3, 0};
-    static const char PROGMEM off_on_1[] = {0xc4, 0};
-    static const char PROGMEM off_on_2[] = {0xc5, 0};
-    static const char PROGMEM on_on_1[] = {0xc6, 0};
-    static const char PROGMEM on_on_2[] = {0xc7, 0};
+    static const char PROGMEM off_off_1[] = {0xc5, 0};
+    static const char PROGMEM off_off_2[] = {0xc6, 0};
+    static const char PROGMEM on_off_1[] = {0xc7, 0};
+    static const char PROGMEM on_off_2[] = {0xc8, 0};
+    static const char PROGMEM off_on_1[] = {0xc9, 0};
+    static const char PROGMEM off_on_2[] = {0xca, 0};
+    static const char PROGMEM on_on_1[] = {0xcb, 0};
+    static const char PROGMEM on_on_2[] = {0xcc, 0};
 
     if (modifiers & MOD_MASK_CTRL)
     {
@@ -195,23 +198,19 @@ void render_mod_status_ctrl_shift(uint8_t modifiers)
     }
 }
 
-void render_paw(void)
-{
-    static const char PROGMEM paw[] = {0x8e, 0x8f, 0x90, 0x91, 0x92, 0xae, 0xaf, 0xb0, 0xb1, 0xb2, 0xce, 0xcf, 0xd0, 0xd1, 0xd2, 0};
-    oled_write_P(paw, false);
-}
-
+// Layers States
 void render_layer_state(void)
 {
     oled_write_P(PSTR("Layer"), false);
+
     // Be aware that length of layer captions should be always 5 characters, otherwise the layout will look eerie.
     switch (get_highest_layer(layer_state))
     {
     case _COLEMAK:
-        oled_write_P(PSTR("C-DH "), false);
+        oled_write_P(PSTR("COLDH"), false);
         break;
     case _QWERTY:
-        oled_write_P(PSTR("QWER "), false);
+        oled_write_P(PSTR("QWERT"), false);
         break;
     case _GAME:
         oled_write_P(PSTR("GAME "), false);
@@ -225,24 +224,5 @@ void render_layer_state(void)
     default:
         oled_write_P(PSTR("?????"), false);
         break;
-    }
-}
-
-void oled_task_user(void)
-{
-    if (is_keyboard_master())
-    {
-        render_paw();
-        render_space();
-        render_space();
-        render_layer_state();
-        render_space();
-        render_space();
-        render_mod_status_gui_alt(get_mods() | get_oneshot_mods());
-        render_mod_status_ctrl_shift(get_mods() | get_oneshot_mods());
-    }
-    else
-    {
-        render_paw();
     }
 }

@@ -2,7 +2,7 @@
 
 #include QMK_KEYBOARD_H
 
-enum lily_layers {
+enum my_lily_layers {
     _COLEMAK = 0,
     _QWERTY,
     _GAME,
@@ -11,7 +11,7 @@ enum lily_layers {
     _ADJUST,
 };
 
-enum lily_keycodes {
+enum my_lily_keycodes {
     COLEMAK = SAFE_RANGE,
     QWERTY,
     GAME

@@ -22,11 +22,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define MASTER_LEFT
 
-#define TAPPING_FORCE_HOLD
 #define TAPPING_TERM 150
 
 #define AUTO_SHIFT_TIMEOUT 200
 // #define NO_AUTO_SHIFT_SPECIAL
+
+#define OLED_TIMEOUT 300000
+
+#define MOON_LINE 1   // the line you want the moon to appear at
+#define MOON_COLUMN 1 // the column you want the moon to appear at
+#define ANIMATE_MOON_EVERY_N_FRAMES 25 // animate the moon every n frames
 
 // Override OLED font with our custom one.
 #if defined(OLED_FONT_H)

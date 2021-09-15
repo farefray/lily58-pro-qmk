@@ -4,6 +4,8 @@
 #include "ssd1306.h"
 #include "oled.c"
 
+#include "brain.c"
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -147,34 +149,4 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
-layer_state_t layer_state_set_user(layer_state_t state) { return update_tri_layer_state(state, _UTIL, _PAGE, _ADJUST); }
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record)
-{
-  switch (keycode)
-  {
-  case COLEMAK:
-    if (record->event.pressed)
-    {
-      layer_clear();
-      layer_on(_COLEMAK);
-    }
-    return false;
-  case QWERTY:
-    if (record->event.pressed)
-    {
-      layer_clear();
-      layer_on(_QWERTY);
-    }
-    return false;
-  case GAME:
-    if (record->event.pressed)
-    {
-      layer_clear();
-      layer_on(_GAME);
-    }
-    return false;
-  }
-
-  return true;
-}
