@@ -197,32 +197,3 @@ void render_mod_status_ctrl_shift(uint8_t modifiers)
         oled_write_P(shift_off_2, false);
     }
 }
-
-// Layers States
-void render_layer_state(void)
-{
-    oled_write_P(PSTR("Layer"), false);
-
-    // Be aware that length of layer captions should be always 5 characters, otherwise the layout will look eerie.
-    switch (get_highest_layer(layer_state))
-    {
-    case _COLEMAK:
-        oled_write_P(PSTR("COLDH"), false);
-        break;
-    case _QWERTY:
-        oled_write_P(PSTR("QWERT"), false);
-        break;
-    case _GAME:
-        oled_write_P(PSTR("GAME "), false);
-        break;
-    case _UTIL:
-        oled_write_P(PSTR("UTIL "), false);
-        break;
-    case _PAGE:
-        oled_write_P(PSTR("PAGE "), false);
-        break;
-    default:
-        oled_write_P(PSTR("?????"), false);
-        break;
-    }
-}
