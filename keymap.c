@@ -2,8 +2,10 @@
 #include "layers.h"
 
 #include "ssd1306.h"
+
 #include "oled.c"
 #include "oled_animations.c"
+
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -147,5 +149,4 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 // clang-format on
-
 

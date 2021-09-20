@@ -26,12 +26,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define AUTO_SHIFT_TIMEOUT 175
 
-#define OLED_TIMEOUT 300000
-
-#define MOON_LINE 1   // the line you want the moon to appear at
-#define MOON_COLUMN 1 // the column you want the moon to appear at
-#define ANIMATE_MOON_EVERY_N_FRAMES 25 // animate the moon every n frames
-
 // Override OLED font with our custom one.
 #if defined(OLED_FONT_H)
 #    undef OLED_FONT_H

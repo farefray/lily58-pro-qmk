@@ -16,9 +16,8 @@ UNICODE_ENABLE = no         # Unicode
 RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight.
 SWAP_HANDS_ENABLE = no      # Enable one-hand typing
 OLED_ENABLE = yes           # OLED display
-DEBOUNCE_TYPE = sym_defer_g # could try sym_eager_pr
 
-WPM_ENABLE = no
+WPM_ENABLE = yes
 LTO_ENABLE = yes     # Makes hex file smaller
 
 

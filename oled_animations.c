@@ -1,3 +1,7 @@
+#include "secondary_oled.c"
+
+char wpm_str[10];
+
 layer_state_t layer_state_set_user(layer_state_t state) { return update_tri_layer_state(state, _UTIL, _PAGE, _ADJUST); }
 
 // Oled Rotations
@@ -19,55 +23,15 @@ void render_status_main(void)
     render_space();
 }
 
-// Slave Oled
-uint8_t moon_animation_frame = 0;    // keeps track of current moon frame
-uint16_t moon_animation_counter = 0; // counts how many frames to wait before animating moon to next frame
-static const char PROGMEM moon_animation[14][8] = {
-    // clang-format off
-    { 0x3C, 0x7E, 0xFF, 0xFF, 0xFF, 0xFF, 0x7E, 0x3C, },
-    { 0x3C, 0x7E, 0xFF, 0xFF, 0xFF, 0xFF, 0x42, 0x00, },
-    { 0x3C, 0x7E, 0xFF, 0xFF, 0xFF, 0xC3, 0x00, 0x00, },
-    { 0x3C, 0x7E, 0xFF, 0xFF, 0xC3, 0x81, 0x00, 0x00, },
-    { 0x3C, 0x7E, 0xFF, 0xC3, 0x81, 0x00, 0x00, 0x00, },
-    { 0x3C, 0x7E, 0xC3, 0x81, 0x81, 0x00, 0x00, 0x00, },
-    { 0x3C, 0x42, 0x81, 0x81, 0x00, 0x00, 0x00, 0x00, },
-    { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, },
-    { 0x00, 0x00, 0x00, 0x00, 0x81, 0x81, 0x42, 0x3C, },
-    { 0x00, 0x00, 0x00, 0x81, 0x81, 0xC3, 0x7E, 0x3C, },
-    { 0x00, 0x00, 0x00, 0x81, 0xC3, 0xFF, 0x7E, 0x3C, },
-    { 0x00, 0x00, 0x81, 0xC3, 0xFF, 0xFF, 0x7E, 0x3C, },
-    { 0x00, 0x00, 0xC3, 0xFF, 0xFF, 0xFF, 0x7E, 0x3C, },
-    { 0x00, 0x42, 0xFF, 0xFF, 0xFF, 0xFF, 0x7E, 0x3C, },
-    // clang-format on
-};
-
-static uint8_t increment_counter(uint8_t counter, uint8_t max)
-{
-    counter++;
-    if (counter >= max)
-    {
-        return 0;
-    }
-    else
-    {
-        return counter;
-    }
-}
-
-static void draw_moon(void)
-{
-    moon_animation_counter = increment_counter(moon_animation_counter, ANIMATE_MOON_EVERY_N_FRAMES);
-    if (moon_animation_counter == 0)
-    {
-        moon_animation_frame = increment_counter(moon_animation_frame, 14);
-        oled_set_cursor(MOON_COLUMN, MOON_LINE);
-        oled_write_raw_P(moon_animation[moon_animation_frame], 8);
-    }
-}
-
 void render_status_secondary(void)
 {
-    draw_moon();
+    oled_set_cursor(0, 0);                           // sets cursor to (row, column) using charactar spacing (5 rows on 128x32 screen, anything more will overflow back to the top)
+    sprintf(wpm_str, "WPM:%03d", get_current_wpm()); // edit the string to change wwhat shows up, edit %03d to change how many digits show up
+    oled_write(wpm_str, false);                      // writes wpm on top left corner of string
+
+    led_t led_state = host_keyboard_led_state(); // caps lock stuff, prints CAPS on new line if caps led is on
+    oled_set_cursor(0, 1);
+    oled_write_P(led_state.caps_lock ? PSTR("CAPS") : PSTR("       "), false);
 }
 
 void oled_task_user(void)
