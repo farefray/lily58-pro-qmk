@@ -20,12 +20,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-#define MASTER_LEFT
+#define MASTER_RIGHT
 
-#define TAPPING_TERM 150
+#define TAPPING_TERM 175
 
-#define AUTO_SHIFT_TIMEOUT 200
-// #define NO_AUTO_SHIFT_SPECIAL
+#define AUTO_SHIFT_TIMEOUT 175
 
 #define OLED_TIMEOUT 300000
 

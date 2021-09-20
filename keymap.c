@@ -3,8 +3,7 @@
 
 #include "ssd1306.h"
 #include "oled.c"
-
-#include "brain.c"
+#include "oled_animations.c"
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
