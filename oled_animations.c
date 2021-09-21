@@ -23,8 +23,6 @@ void render_status_main(void)
 
 void render_status_secondary(void)
 {
-    oled_set_cursor(0, 0);                           // sets cursor to (row, column) using charactar spacing (5 rows on 128x32 screen, anything more will overflow back to the top)
-    sprintf(wpm_str, "WPM:%03d", get_current_wpm()); // edit the string to change wwhat shows up, edit %03d to change how many digits show up
 }
 
 void oled_task_user(void)
