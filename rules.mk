@@ -17,9 +17,9 @@ RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight.
 SWAP_HANDS_ENABLE = no      # Enable one-hand typing
 OLED_ENABLE = yes           # OLED display
 
-WPM_ENABLE = yes
+WPM_ENABLE = no
 LTO_ENABLE = yes     # Makes hex file smaller
-
+RAW_ENABLE = yes
 
 # If you want to change the display of OLED, you need to change here
 SRC +=  ./lib/rgb_state_reader.c \
