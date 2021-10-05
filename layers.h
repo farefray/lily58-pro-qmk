@@ -11,10 +11,14 @@ enum my_lily_layers {
     _ADJUST,
 };
 
-enum my_lily_keycodes {
+enum my_lily_keycodes
+{
     COLEMAK = SAFE_RANGE,
     QWERTY,
-    GAME
+    GAME,
+
+    // macros
+    COPY_MACRO
 };
 
 // Layers States

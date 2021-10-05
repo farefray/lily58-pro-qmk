@@ -7,7 +7,7 @@ void render_space(void) { oled_write_P(PSTR("     "), false); }
 void render_logo(void)
 {
     oled_write_P(PSTR("fare:"), false);
-    oled_write_P(PSTR("rev.3"), false);
+    oled_write_P(PSTR("rev.4"), false);
 }
 
 // Alt modifiers

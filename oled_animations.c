@@ -37,34 +37,3 @@ void oled_task_user(void)
         render_status_secondary();
     }
 }
-
-// Oled Wakes
-bool process_record_user(uint16_t keycode, keyrecord_t *record)
-{
-    switch (keycode)
-    {
-    case COLEMAK:
-        if (record->event.pressed)
-        {
-            layer_clear();
-            layer_on(_COLEMAK);
-        }
-        return false;
-    case QWERTY:
-        if (record->event.pressed)
-        {
-            layer_clear();
-            layer_on(_QWERTY);
-        }
-        return false;
-    case GAME:
-        if (record->event.pressed)
-        {
-            layer_clear();
-            layer_on(_GAME);
-        }
-        return false;
-    }
-
-    return true;
-}

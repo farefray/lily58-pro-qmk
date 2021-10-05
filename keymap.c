@@ -6,6 +6,7 @@
 #include "oled.c"
 #include "oled_animations.c"
 
+#include "macros.c"
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -14,11 +15,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |ESC`~ |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  =   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Tab  |   Q  |   W  |   F  |   P  |   B  |                    |   J  |   L  |   U  |   Y  |   ;  |  -   |
+ * | Tab  |   Q  |   W  |   F  |   P  |   B  |                    |   J  |   L  |   U  |   Y  |   `  |  -   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | [    |   A  |   R  |   S  |   T  |   G  |-------.    ,-------|   M  |   N  |   E  |   I  |   O  |  `   |
+ * | [    |   A  |   R  |   S  |   T  |   G  |-------.    ,-------|   M  |   N  |   E  |   I  |   O  |  ;   |
  * |------+------+------+------+------+------|   ,   |    |    .  |------+------+------+------+------+------|
- * |LCtl (|   Z  |   X  |   C  |   D  |   V  |-------|    |-------|   K  |   H  |   '  |   \  |   /  |  ]   |
+ * | LCtl |   Z  |   X  |   C  |   D  |   V  |-------|    |-------|   K  |   H  |   '  |   \  |   /  |  ]   |
  * `-----------------------------------------/ LShift/     \ UTIL \-----------------------------------------'
  *                   | Meh | LAlt/{ |  BcSp | /[Space]/       \[Entr]\  | PAGE | RAlt | LGUI |
  *                   |     |         |      |/       /         \      \ |      |[Caps]|      |
@@ -27,10 +28,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  [_COLEMAK] = LAYOUT( \
    KC_GESC, KC_1, KC_2,    KC_3,    KC_4,   KC_5,                                    KC_6,      KC_7,            KC_8,    KC_9,    KC_0,    KC_EQL,  \
-   KC_TAB, KC_Q, KC_W,    KC_F,    KC_P,   KC_B,                                    KC_J,      KC_L,            KC_U,    KC_Y,    KC_SCLN, KC_MINS, \
-  KC_LBRC, KC_A, KC_R,    KC_S,    KC_T,   KC_G,                                    KC_M,      KC_N,            KC_E,    KC_I,    KC_O,    KC_GRV,  \
-  KC_LCPO, KC_Z, KC_X,    KC_C,    KC_D,   KC_V,        KC_COMM,  KC_DOT,           KC_K,      KC_H,            KC_QUOT, KC_BSLS, KC_SLSH, KC_RBRC, \
-                  KC_MEH,   KC_LALT, KC_BSPC, LSFT_T(KC_SPC),  LT(_UTIL,KC_ENT), MO(_PAGE), RALT_T(KC_CAPS), KC_LGUI \
+   KC_TAB, KC_Q, KC_W,    KC_F,    KC_P,   KC_B,                                    KC_J,      KC_L,            KC_U,    KC_Y,    KC_GRV, KC_MINS, \
+  KC_LBRC, KC_A, KC_R,    KC_S,    KC_T,   KC_G,                                    KC_M,      KC_N,            KC_E,    KC_I,    KC_O,    KC_SCLN,  \
+  KC_LCPO, KC_Z, KC_X,    KC_C,    KC_D,   KC_V,        KC_COMM,  KC_DOT,           KC_K,      KC_H,            KC_QUOT, KC_BSLS, KC_SLSH, KC_LCTRL, \
+          COPY_MACRO, LT(_UTIL, KC_KP_EQUAL), KC_BSPC, LSFT_T(KC_SPC),  LT(_UTIL,KC_ENT), MO(_PAGE), RALT_T(KC_CAPS), KC_LGUI \
 ),
 
 /* QWERTY
@@ -96,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_UTIL] = LAYOUT( \
   DF(_COLEMAK),   KC_F1,   KC_F2,        KC_F3,   KC_F4,        KC_F5,                           DF(_UTIL), _______, _______, _______,  _______, KC_PSCR,       \
-       _______,   KC_F6,   KC_F7,        KC_F8,   KC_F9,       KC_F10,                           _______,   _______, KC_UP,   _______,  KC_MPRV, KC_PAUS,       \
+       KC_DEL,   KC_F6,   KC_F7,        KC_F8,   KC_F9,       KC_F10,                           _______,   _______, KC_UP,   _______,  KC_MPRV, KC_PAUS,       \
         KC_DEL,  KC_F11,  KC_F12,      _______, _______,      _______,                           _______,   KC_LEFT, KC_DOWN, KC_RGHT,  KC_MPLY, RGUI(KC_PAUS), \
         KC_INS, _______, _______, LCTL(KC_INS), _______, LSFT(KC_INS), C_S_T(KC_LSFT),  _______, _______,   _______, _______,  _______, KC_MNXT, _______,       \
                                        KC_TRNS, KC_TRNS,      KC_TRNS,        KC_TRNS,  _______, COLEMAK,   QWERTY,  GAME \
