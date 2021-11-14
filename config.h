@@ -24,7 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define TAPPING_TERM 175
 
-#define AUTO_SHIFT_TIMEOUT 175
+#define AUTO_SHIFT_TIMEOUT 150
 
 // Override OLED font with our custom one.
 #if defined(OLED_FONT_H)
