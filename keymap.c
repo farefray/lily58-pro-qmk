@@ -31,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    KC_TAB, KC_Q, KC_W,    KC_F,    KC_P,   KC_B,                                    KC_J,      KC_L,            KC_U,    KC_Y,    KC_GRV, KC_MINS, \
   KC_LBRC, KC_A, KC_R,    KC_S,    KC_T,   KC_G,                                    KC_M,      KC_N,            KC_E,    KC_I,    KC_O,    KC_SCLN,  \
   KC_LCTRL, KC_Z, KC_X,    KC_C,    KC_D,   KC_V,        KC_COMM,  KC_DOT,           KC_K,      KC_H,            KC_QUOT, KC_BSLS, KC_SLSH, KC_RBRC, \
-          COPY_MACRO, LT(_UTIL, KC_KP_EQUAL), KC_BSPC, LSFT_T(KC_SPC),  LT(_UTIL,KC_ENT), MO(_PAGE), RALT_T(KC_CAPS), KC_LGUI \
+          KC_ESC, LT(_UTIL, KC_KP_EQUAL), KC_BSPC, LSFT_T(KC_SPC),  LT(_UTIL,KC_ENT), MO(_PAGE), RALT_T(KC_CAPS), KC_LGUI \
 ),
 
 /* QWERTY
@@ -124,30 +124,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        _______, _______, _______, _______, _______, _______,                    _______,    KC_HOME, KC_PGDN, KC_END,  _______, _______, \
        _______, _______, _______, _______, _______, _______, _______,  _______, _______,    _______, _______, _______, _______, _______, \
                                   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  _______, _______,    _______, _______ \
-),
-
-/* ADJUST (never used actually, saved from original config)
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------.    ,-------|      |      |RGB ON| HUE+ | SAT+ | VAL+ |
- * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------|    |-------|      |      | MODE | HUE- | SAT- | VAL- |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |RAISE |BackSP| RGUI |
- *                   |      |      |      |/       /         \      \ |      |      |      |
- *                   `----------------------------'           '------''--------------------'
- */
-
-  [_ADJUST] = LAYOUT( \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
-                             _______, _______, _______, _______, _______,  _______, _______, _______ \
-  )
+)
 };
 // clang-format on
-

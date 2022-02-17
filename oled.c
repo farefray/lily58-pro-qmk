@@ -1,13 +1,9 @@
-// Thanks to SoundMaster's Code.
+void render_space(void) { oled_write_P(PSTR("\n"), false); }
 
-// Blank space
-void render_space(void) { oled_write_P(PSTR("     "), false); }
-
-// Logo
 void render_logo(void)
 {
     oled_write_P(PSTR("fare:"), false);
-    oled_write_P(PSTR("rev.5"), false);
+    oled_write_P(PSTR("rev.6"), false);
 }
 
 // Alt modifiers
