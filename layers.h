@@ -4,8 +4,7 @@
 
 enum my_lily_layers
 {
-    _COLEMAK = 0,
-    _QWERTY,
+    _QWERTY = 0,
     _GAME,
     _UTIL,
     _PAGE,
@@ -13,41 +12,37 @@ enum my_lily_layers
 
 enum my_lily_keycodes
 {
-    COLEMAK = SAFE_RANGE,
-    QWERTY,
+    QWERTY = SAFE_RANGE,
     GAME
 };
 
 // Layers States
 void render_layer_state(void)
 {
-    oled_write_P(PSTR("Layer: "), false);
+    oled_write_P(PSTR("Layer"), false);
 
-    // Be aware that length of layer captions should be always 5 characters, otherwise the layout will look eerie.
+    // Be aware that length of layer captions should be always 5 characters
     switch (get_highest_layer(layer_state))
     {
-    case _COLEMAK:
-        oled_write_P(PSTR("COLEMAK\n"), false);
-        autoshift_enable();
-        break;
+
     case _QWERTY:
-        oled_write_P(PSTR("QWERTY\n"), false);
-        autoshift_enable();
+        oled_write_P(PSTR("QWERT"), false);
+        // autoshift_enable();
         break;
     case _GAME:
-        oled_write_P(PSTR("GAME\n"), false);
-        autoshift_disable();
+        oled_write_P(PSTR("SECON"), false);
+        // autoshift_disable();
         break;
     case _UTIL:
-        oled_write_P(PSTR("UTIL\n"), false);
-        autoshift_disable();
+        oled_write_P(PSTR("THIRD"), false);
+        // autoshift_disable();
         break;
     case _PAGE:
-        oled_write_P(PSTR("PAGE\n"), false);
-        autoshift_disable();
+        oled_write_P(PSTR("FOURT"), false);
+        // autoshift_disable();
         break;
     default:
-        oled_write_P(PSTR("?????\n"), false);
+        oled_write_P(PSTR("?????"), false);
         break;
     }
 }
